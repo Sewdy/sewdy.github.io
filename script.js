@@ -16,8 +16,8 @@ function extract(ligne){
   var width = Number(line[5]);
   var height = Number(line [7]);
   var color = line[9];
-  var thickness = Number(Number(line[11]).toFixed(2));
-      if (thickness == 1){
+  var thickness = (Number(line[11]).toFixed(2))+",";
+      if (thickness == "1,"){
         thickness = "";
       }
   
@@ -44,8 +44,8 @@ function extract(ligne){
   var y = Number(line[3]);
   var r = Number(line[5]);
   var color = line[7];
-  var thickness = Number(Number(line[9]).toFixed(2));
-      if (thickness == 1){
+  var thickness = (Number(line[9]).toFixed(2))+",";
+      if (thickness == "1,"){
         thickness = "";
       }
 
@@ -65,8 +65,8 @@ function extract(ligne){
   var x2 = Number(line[5]);
   var y2 = Number(line [7]);
   var color = line[9];
-  var thickness = Number(Number(line[11]).toFixed(2));
-      if (thickness == 1){
+ var thickness = (Number(line[11]).toFixed(2))+",";
+      if (thickness == "1,"){
         thickness = "";
       }
 
