@@ -17,7 +17,7 @@ function extract(ligne){
   var height = Number(line [7]);
   var color = line[9];
   var thickness = Number(Number(line[11]).toFixed(2));
-      if (thickness == 1){
+      if (thickness == 1 && (document.getElementById("vdecomp").checked == false)){
         thickness="";
       }
       else {
@@ -47,7 +47,7 @@ function extract(ligne){
   var r = Number(line[5]);
   var color = line[7];
   var thickness = Number(Number(line[9]).toFixed(2));
-  if (thickness == 1){
+  if (thickness == 1 && (document.getElementById("vdecomp").checked == false)){
         thickness="";
       }
       else {
@@ -73,7 +73,7 @@ function extract(ligne){
   var y2 = Number(line [7]);
   var color = line[9];
   var thickness = Number(Number(line[11]).toFixed(2));
-  if (thickness == 1){
+  if (thickness == 1 && (document.getElementById("vdecomp").checked == false)){
         thickness="";
       }
       else {
