@@ -16,14 +16,13 @@ function extract(ligne){
   var width = Number(line[5]);
   var height = Number(line [7]);
   var color = line[9];
-  var thickness = Number(Number(line[11]).toFixed(2)));
+  var thickness = Number(Number(line[11]).toFixed(2));
       if (thickness == 1){
-        thickness = "";
+        thickness="";
       }
-    else {
-       thickness = thickness+",";
-    }
-  
+      else {
+        thickness=","+thickness;
+      }
 
   color = color.substring(
     color.lastIndexOf("(") + 1, 
@@ -47,13 +46,15 @@ function extract(ligne){
   var y = Number(line[3]);
   var r = Number(line[5]);
   var color = line[7];
-  var thickness = Number(Number(line[9]).toFixed(2)));
-      if (thickness == 1){
-        thickness = "";
+  var thickness = Number(Number(line[9]).toFixed(2));
+  if (thickness == 1){
+        thickness="";
       }
-    else {
-       thickness = thickness+",";
-    }
+      else {
+        thickness=","+thickness;
+      }
+  
+
 
   color = color.substring(
     color.lastIndexOf("(") + 1, 
@@ -71,13 +72,14 @@ function extract(ligne){
   var x2 = Number(line[5]);
   var y2 = Number(line [7]);
   var color = line[9];
- var thickness = Number(Number(line[9]).toFixed(2)));
-      if (thickness == 1){
-        thickness = "";
+  var thickness = Number(Number(line[11]).toFixed(2));
+  if (thickness == 1){
+        thickness="";
       }
-    else {
-       thickness = thickness+",";
-    }
+      else {
+        thickness=","+thickness;
+      }
+
 
   color = color.substring(
     color.lastIndexOf("(") + 1, 
@@ -182,10 +184,10 @@ function convert(param){
           }
 
       if (VDEcomptability == true) {
-   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.width*2},${param.thickness}0\"/>`;
+   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.width*2}${param.thickness},0\"/>`;
       }
       else {
-   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.width*2},${param.thickness}\"/>`;
+   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.width*2}${param.thickness}\"/>`;
       }
         }
         else {
@@ -198,14 +200,11 @@ function convert(param){
       var p4 = [Math.round(x+param.width/2),Math.round(y+(param.height)-param.width/2)];
       
       if (VDEcomptability == true) {
-        if (param.thickness == "") {
-            param.thickness = ",";
-        }
-   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.height},${param.thickness}0\"/><JD P1=\"${p3[0]},${p3[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height},${param.thickness}0\"/><JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p3[0]},${p3[1]}\"c=\"${param.color},${param.height},${param.thickness}0\"/><JD P1=\"${p2[0]},${p2[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height},${param.thickness}0\"/>`;
+   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.height}${param.thickness},0\"/><JD P1=\"${p3[0]},${p3[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height}${param.thickness},0\"/><JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p3[0]},${p3[1]}\"c=\"${param.color},${param.height}${param.thickness},0\"/><JD P1=\"${p2[0]},${p2[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height}${param.thickness},0\"/>`;
 
       }
       else {
-   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.height},${param.thickness}\"/><JD P1=\"${p3[0]},${p3[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height},${param.thickness}\"/><JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p3[0]},${p3[1]}\"c=\"${param.color},${param.height},${param.thickness}\"/><JD P1=\"${p2[0]},${p2[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height},${param.thickness}\"/>`;
+   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.height}${param.thickness}\"/><JD P1=\"${p3[0]},${p3[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height}${param.thickness}\"/><JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p3[0]},${p3[1]}\"c=\"${param.color},${param.height}${param.thickness}\"/><JD P1=\"${p2[0]},${p2[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height}${param.thickness}\"/>`;
       }
 
         }
@@ -227,13 +226,10 @@ function convert(param){
           }
           
       if (VDEcomptability == true) {
-        if (param.thickness == "") {
-            param.thickness = ",";
-        }
-   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.height*2},${param.thickness}0\"/>`;     
+   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.height*2}${param.thickness},0\"/>`;     
       }
       else {
-   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.height*2},${param.thickness}\"/>`;
+   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.height*2}${param.thickness}\"/>`;
       }
         }
         else { 
@@ -245,13 +241,10 @@ function convert(param){
       var p4 = [Math.round((x+param.width)-param.height/2),Math.round(y+param.height/2)];
 
       if (VDEcomptability == true) {
-        if (param.thickness == "") {
-            param.thickness = ",";
-        }
-   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.height},${param.thickness}0\"/><JD P1=\"${p3[0]},${p3[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height},${param.thickness}0\"/><JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p3[0]},${p3[1]}\"c=\"${param.color},${param.height},${param.thickness}0\"/><JD P1=\"${p2[0]},${p2[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height},${param.thickness}0\"/>`;
+   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.height}${param.thickness},0\"/><JD P1=\"${p3[0]},${p3[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height}${param.thickness},0\"/><JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p3[0]},${p3[1]}\"c=\"${param.color},${param.height}${param.thickness},0\"/><JD P1=\"${p2[0]},${p2[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height}${param.thickness},0\"/>`;
     }
       else {
-   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.height},${param.thickness}\"/><JD P1=\"${p3[0]},${p3[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height},${param.thickness}\"/><JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p3[0]},${p3[1]}\"c=\"${param.color},${param.height},${param.thickness}\"/><JD P1=\"${p2[0]},${p2[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height},${param.thickness}\"/>`;
+   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.height}${param.thickness}\"/><JD P1=\"${p3[0]},${p3[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height}${param.thickness}\"/><JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p3[0]},${p3[1]}\"c=\"${param.color},${param.height}${param.thickness}\"/><JD P1=\"${p2[0]},${p2[1]}\"P2=\"${p4[0]},${p4[1]}\"c=\"${param.color},${param.height}${param.thickness}\"/>`;
 
       }
         
@@ -273,14 +266,11 @@ function convert(param){
 
 
       if (VDEcomptability == true) {
-        if (param.thickness == "") {
-            param.thickness = ",";
-        }
-   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.r*4+1},${param.thickness}0\"/>`;
+   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.r*4+1}${param.thickness},0\"/>`;
 
       }
       else {
-   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.r*4+1},${param.thickness}\"/>`;
+   return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},${param.r*4+1}${param.thickness}\"/>`;
 
       }
 
@@ -293,13 +283,10 @@ function convert(param){
             var axeb = (param.y*2)-Math.round((param.r*0.75));
             
     if (VDEcomptability == true) {
-      if (param.thickness == "") {
-            param.thickness = ",";
-        }
-    return `<JD P1=\"${axeg},${axeh}\"P2=\"${axed},${axeh}\"c=\"${param.color},${param.r*2},${param.thickness}0\"/><JD P1=\"${axeg},${axeb}\"P2=\"${axed},${axeb}\"c=\"${param.color},${param.r*2},${param.thickness}0\"/><JD P1=\"${axeg},${param.y*2}\"P2=\"${axed},${param.y*2}\"c=\"${param.color},${param.r*2},${param.thickness}0\"/><JD P1=\"${axeg},${axeh}\"P2=\"${axeg},${axeb}\"c=\"${param.color},${param.r*2},${param.thickness}0\"/><JD P1=\"${axed},${axeh}\"P2=\"${axed},${axeb}\"c=\"${param.color},${param.r*2},${param.thickness}0\"/>`;
+    return `<JD P1=\"${axeg},${axeh}\"P2=\"${axed},${axeh}\"c=\"${param.color},${param.r*2}${param.thickness},0\"/><JD P1=\"${axeg},${axeb}\"P2=\"${axed},${axeb}\"c=\"${param.color},${param.r*2}${param.thickness},0\"/><JD P1=\"${axeg},${param.y*2}\"P2=\"${axed},${param.y*2}\"c=\"${param.color},${param.r*2}${param.thickness},0\"/><JD P1=\"${axeg},${axeh}\"P2=\"${axeg},${axeb}\"c=\"${param.color},${param.r*2}${param.thickness},0\"/><JD P1=\"${axed},${axeh}\"P2=\"${axed},${axeb}\"c=\"${param.color},${param.r*2}${param.thickness},0\"/>`;
     }
     else {
-    return `<JD P1=\"${axeg},${axeh}\"P2=\"${axed},${axeh}\"c=\"${param.color},${param.r*2},${param.thickness}\"/><JD P1=\"${axeg},${axeb}\"P2=\"${axed},${axeb}\"c=\"${param.color},${param.r*2},${param.thickness}\"/><JD P1=\"${axeg},${param.y*2}\"P2=\"${axed},${param.y*2}\"c=\"${param.color},${param.r*2},${param.thickness}\"/><JD P1=\"${axeg},${axeh}\"P2=\"${axeg},${axeb}\"c=\"${param.color},${param.r*2},${param.thickness}\"/><JD P1=\"${axed},${axeh}\"P2=\"${axed},${axeb}\"c=\"${param.color},${param.r*2},${param.thickness}\"/>`;
+    return `<JD P1=\"${axeg},${axeh}\"P2=\"${axed},${axeh}\"c=\"${param.color},${param.r*2}${param.thickness}\"/><JD P1=\"${axeg},${axeb}\"P2=\"${axed},${axeb}\"c=\"${param.color},${param.r*2}${param.thickness}\"/><JD P1=\"${axeg},${param.y*2}\"P2=\"${axed},${param.y*2}\"c=\"${param.color},${param.r*2}${param.thickness}\"/><JD P1=\"${axeg},${axeh}\"P2=\"${axeg},${axeb}\"c=\"${param.color},${param.r*2}${param.thickness}\"/><JD P1=\"${axed},${axeh}\"P2=\"${axed},${axeb}\"c=\"${param.color},${param.r*2}${param.thickness}\"/>`;
     }
           }
 
@@ -311,10 +298,7 @@ function convert(param){
           var p1 = [param.x1*2,param.y1*2];
           var p2 = [param.x2*2,param.y2*2];
     if (VDEcomptability == true) {
-      if (param.thickness == "") {
-            param.thickness = ",";
-        }
-    return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},4,${param.thickness}0\"/>`;
+    return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},4,${param.thickness},0\"/>`;
     }
     else {
     return `<JD P1=\"${p1[0]},${p1[1]}\"P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},4,${param.thickness}\"/>`;
