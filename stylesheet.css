@@ -1,6 +1,6 @@
 body {
-  background: #161616;
-  color: #bdbdbd;
+  background: #f1e8e8;
+  color: #270808;
   font-weight: 300;
   height: 100vh;
   margin: 0;
@@ -46,5 +46,3 @@ a:hover, a:active {
 .button:hover {
   background-color: rgb(65, 65, 170);
 }
-/* CSS Document */
-
