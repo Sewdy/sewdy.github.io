@@ -3,7 +3,6 @@ function rgbToHex(r, g, b) {
 }
 
 
-
 function extract(ligne){
   // rect 1, circle 2, line 3, poly 4
   
