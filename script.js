@@ -302,6 +302,9 @@ return `<JD P1=\"${p1[0]},${p1[1]}\" P2=\"${p2[0]},${p2[1]}\"c=\"${param.color},
 function write(color,e,o,p1,p2,p3 = "no",p4 = "no") {
   var VDEcomptability = document.getElementById("vdecomp").checked;
     let XML="";
+     if (e < 3) {
+       return XML;
+    }
     if ((p3=="no") && (p4=="no")){
       XML += "<JD ";
       XML += `P1="${p1[0]},${p1[1]}"P2="${p2[0]},${p2[1]}"c="${color},${e}`;
@@ -351,6 +354,9 @@ var nbrelignes = chaine.length;
   while (ligne < nbrelignes) {
        XML += convert(extract(chaine[ligne]));
     ligne = ligne +2;
+    if (XML.length > 61000){
+      ligne = nbrelignes;
+    }
   }
 
 
